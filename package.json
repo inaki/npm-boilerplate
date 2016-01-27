@@ -1,0 +1,30 @@
+{
+  "name": "npm-boilerplate",
+  "version": "1.0.0",
+  "description": "frontend boilerplate starter kit using npm",
+  "main": "index.js",
+  "scripts": {
+    "html": "html-minifier --collapse-whitespace ./src/index.html -o ./dist/index.html",
+    "css": "stylus --include ./node_modules --include-css --compress ./src/css/main.styl -o ./dist/css/style.css",
+    "js": "browserify ./src/js/main.js | uglifyjs > ./dist/js/bundle.js",
+    "build": "npm run html & npm run css & npm run js",
+    "watch-html": "nodemon --ext html --watch ./src/ --exec 'npm run html'",
+    "watch-css": "nodemon --ext styl --watch ./src/css --exec 'npm run css'",
+    "watch-js": "nodemon --ext js --watch ./src/js --exec 'npm run js'",
+    "watch": "npm run watch-html & npm run watch-css & npm run watch-js",
+    "server": "npm run watch & live-server --port=3000 ./dist"
+  },
+  "author": "inaki",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "html-minifier": "^1.1.1",
+    "live-server": "^0.9.1",
+    "nodemon": "^1.8.1",
+    "stylus": "^0.53.0",
+    "uglify-js": "^2.6.1"
+  },
+  "dependencies": {
+    "jquery": "^2.2.0"
+  }
+}
